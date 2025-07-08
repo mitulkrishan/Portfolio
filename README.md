@@ -9,7 +9,6 @@ It showcases my projects, skills, certifications, and resume.
 - Responsive design  
 - Sections: Hero, About, Projects, Skills, Certifications, Resume, Contact
 
-📌 Live Preview: [https://portfolioo-six-iota.vercel.app/]  
 
 ---
 
