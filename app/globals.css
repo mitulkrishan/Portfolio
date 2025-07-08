@@ -1,0 +1,184 @@
+/* ───────────  Tailwind base  ─────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────  Google font  ─────────── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/*─────────────────────────────────────────
+  Light / Dark design-token system (HSL)
+─────────────────────────────────────────*/
+@layer base {
+  :root {
+    /* 3-channel rgb helpers (optional) */
+    --foreground-rgb: 0 0 0;
+    --background-start-rgb: 214 219 220;
+    --background-end-rgb: 255 255 255;
+
+    /* 🌸 Light theme */
+    --background: 329 100% 98%;
+    --foreground: 210 11% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 15%;
+
+    --primary: 346 77% 49%;          /* rose-600 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 239 84% 67%;        /* indigo-500 */
+    --secondary-foreground: 210 11% 15%;
+
+    --accent: 158 64% 52%;           /* emerald-400 */
+    --accent-foreground: 210 11% 15%;
+
+    --muted: 210 6% 95%;
+    --muted-foreground: 210 6% 46%;
+
+    --border: 210 6% 86%;
+    --input : 210 6% 86%;
+    --ring  : 346 77% 49%;
+    --radius: 0.5rem;
+
+    /* explicit custom tokens, light */
+    --rose-50 : 329 100% 98%;
+    --rose-600: 346 77% 49%;
+    --indigo-500: 239 84% 67%;
+    --emerald-400: 158 64% 52%;
+    --slate-800: 210 11% 15%;
+    --slate-300: 210 6% 46%;
+  }
+
+  /* 🌙 Dark overrides */
+  .dark {
+    --background: 220 13% 9%;
+    --foreground: 220 9% 85%;
+
+    --card: 220 11% 12%;
+    --card-foreground: 220 9% 85%;
+
+    --popover: 220 13% 9%;
+    --popover-foreground: 220 9% 85%;
+
+    --primary: 346 77% 74%;          /* rose-300 */
+    --primary-foreground: 220 13% 9%;
+
+    --secondary: 185 84% 75%;        /* cyan-300 alt */
+    --secondary-foreground: 220 9% 85%;
+
+    --accent: 262 83% 58%;           /* purple-500 */
+    --accent-foreground: 220 9% 85%;
+
+    --muted: 220 11% 12%;
+    --muted-foreground: 220 5% 57%;
+
+    --border: 220 11% 15%;
+    --input : 220 11% 15%;
+    --ring  : 346 77% 74%;
+
+    /* explicit custom tokens, dark */
+    --rose-50 : 220 13% 9%;
+    --rose-600: 346 77% 74%;
+    --indigo-500: 185 84% 75%;
+    --emerald-400: 262 83% 58%;
+    --slate-800: 220 9% 85%;
+    --slate-300: 220 5% 57%;
+  }
+
+  /* Global element tweaks */
+  *       { @apply border-border; }
+  html    { scroll-behavior: smooth; }
+  body    {
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))] font-sans antialiased;
+    font-family: "Inter", sans-serif;
+  }
+}
+
+/*─────────────────────────────────────────
+  Utility / component helpers
+─────────────────────────────────────────*/
+@layer components {
+  .theme-transition { transition: all .3s ease-in-out; }
+
+  .section-padding  { @apply py-20; }
+
+  /* Background helpers */
+  .portfolio-bg-light { background-color: hsl(var(--rose-50)); }
+  .portfolio-bg-dark  { @apply dark:bg-gray-900; }
+
+  /* Text helpers */
+  .portfolio-text-primary   { color: hsl(var(--rose-600)); }
+  .portfolio-text-secondary { color: hsl(var(--indigo-500)); }
+  .portfolio-text-accent    { color: hsl(var(--emerald-400)); }
+}
+
+/*─────────────────────────────────────────
+  Checker‑grid background utilities
+─────────────────────────────────────────*/
+@layer utilities {
+ .bg-checker-light {
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(0deg, hsl(var(--slate-300) / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--slate-300) / 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .dark .bg-checker-dark {
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(0deg, hsl(var(--slate-800) / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--slate-800) / 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-diagonal-light {
+    background-color: hsl(var(--rose-50));
+    background-image: repeating-linear-gradient(
+      45deg,
+      hsl(var(--slate-300) / 0.03),
+      hsl(var(--slate-300) / 0.03) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  }
+
+  .dark .bg-diagonal-dark {
+    background-color: hsl(var(--background));
+    background-image: repeating-linear-gradient(
+      45deg,
+      hsl(var(--slate-800) / 0.05),
+      hsl(var(--slate-800) / 0.05) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  }
+
+  .bg-dot-grid-light {
+    background-color: hsl(var(--rose-50));
+    background-image: radial-gradient(hsl(var(--slate-300) / 0.2) 1px, transparent 0);
+    background-size: 24px 24px;
+    background-position: center;
+  }
+
+  .dark .bg-dot-grid-dark {
+    background-color: bg-gray-900;
+    background-image: radial-gradient(hsl(var(--slate-800) / 0.25) 1px, transparent 0);
+    background-size: 24px 24px;
+    background-position: center;
+  }
+
+}
+
+/*─────────────────────────────────────────
+  Animations
+─────────────────────────────────────────*/
+@keyframes fadeIn   { from {opacity:0} to {opacity:1} }
+@keyframes slideUp  { from {opacity:0; transform:translateY(30px)}
+                      to   {opacity:1; transform:translateY(0)} }
+
+.animate-fade-in { animation: fadeIn .6s ease-in-out; }
+.animate-slide-up{ animation: slideUp .6s ease-out; }
